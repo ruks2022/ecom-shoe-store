@@ -6,6 +6,7 @@ const products = [
       id: 1,
       title: "Air Force",
       price: 119,
+      desc: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed quas rem blanditiis ipsam vero earum aliquam ad labore vitae repudiandae pariatur, nemo debitis mollitia a similique, iure, quis fugit quod!",
       colors: [
         {
           code: "black",
@@ -21,6 +22,7 @@ const products = [
       id: 2,
       title: "Air Jordan",
       price: 149,
+      desc: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed quas rem blanditiis ipsam vero earum aliquam ad labore vitae repudiandae pariatur, nemo debitis mollitia a similique, iure, quis fugit quod!",
       colors: [
         {
           code: "lightgray",
@@ -36,6 +38,7 @@ const products = [
       id: 3,
       title: "Blazer",
       price: 109,
+      desc: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed quas rem blanditiis ipsam vero earum aliquam ad labore vitae repudiandae pariatur, nemo debitis mollitia a similique, iure, quis fugit quod!",
       colors: [
         {
           code: "lightgray",
@@ -51,6 +54,7 @@ const products = [
       id: 4,
       title: "Crater",
       price: 129,
+      desc: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed quas rem blanditiis ipsam vero earum aliquam ad labore vitae repudiandae pariatur, nemo debitis mollitia a similique, iure, quis fugit quod!",
       colors: [
         {
           code: "black",
@@ -66,6 +70,7 @@ const products = [
       id: 5,
       title: "Hippie",
       price: 99,
+      desc: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed quas rem blanditiis ipsam vero earum aliquam ad labore vitae repudiandae pariatur, nemo debitis mollitia a similique, iure, quis fugit quod!",
       colors: [
         {
           code: "gray",
@@ -80,7 +85,7 @@ const products = [
   ];
 
 
-let choosenProduct = product[0]
+let choosenProduct = products[0]
 
 const currentProductImg = document.querySelector(".productImg");
 const currentproductTitle = document.querySelector(".productTitle");
@@ -96,7 +101,27 @@ menuItems.forEach((item,index)=>{
         wrapper.style.transform = `translateX(${-100 * index}vw)`;
 
         //change the choosen product
-        choosenProduct = products[index]
+        choosenProduct = products[index];
+
+        //change of current product
+        currentproductTitle.textContent = choosenProduct.title;
+        currentproductPrice.textContent = "$" + choosenProduct.price;
+        currentProductDesc.textContent = choosenProduct.desc;
+        currentProductImg.src = choosenProduct.colors[0].img;
+
+        //assigning new colors
+        currentproductColors.forEach((color, index)=>{
+            color.style.backgroundColor = choosenProduct.colors[index].code;
+        });
+
+    });
+});
+
+
+//changing img based on color button click
+currentproductColors.forEach((color,index)=>{
+    color.addEventListener("click", ()=>{
+        currentProductImg.src = choosenProduct.colors[index].img;
     });
 });
 
