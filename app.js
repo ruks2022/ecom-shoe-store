@@ -87,12 +87,12 @@ const products = [
 
 let choosenProduct = products[0]
 
-const currentProductImg = document.querySelector(".productImg");
+const currentproductImg = document.querySelector(".productImg");
 const currentproductTitle = document.querySelector(".productTitle");
 const currentproductPrice = document.querySelector(".productPrice");
 const currentProductDesc = document.querySelector(".productDesc");
 const currentproductColors = document.querySelectorAll(".color");
-const currentProductSizes = document.querySelector(".size");
+const currentproductSizes = document.querySelectorAll(".size");
 
 
 menuItems.forEach((item,index)=>{
@@ -107,7 +107,7 @@ menuItems.forEach((item,index)=>{
         currentproductTitle.textContent = choosenProduct.title;
         currentproductPrice.textContent = "$" + choosenProduct.price;
         currentProductDesc.textContent = choosenProduct.desc;
-        currentProductImg.src = choosenProduct.colors[0].img;
+        currentproductImg.src = choosenProduct.colors[0].img;
 
         //assigning new colors
         currentproductColors.forEach((color, index)=>{
@@ -121,8 +121,33 @@ menuItems.forEach((item,index)=>{
 //changing img based on color button click
 currentproductColors.forEach((color,index)=>{
     color.addEventListener("click", ()=>{
-        currentProductImg.src = choosenProduct.colors[index].img;
+      currentproductImg.src = choosenProduct.colors[index].img;
     });
 });
 
 // wrapper.style.transform = "translateX(-400vw)";
+
+currentproductSizes.forEach((size,index)=>{
+  size.addEventListener("click",()=>{
+    currentproductSizes.forEach((size)=>{
+      size.style.backgroundColor="white"
+      size.style.color="black"
+    })
+    size.style.backgroundColor="black"
+    size.style.color="white"
+
+  });
+});
+
+const productButton = document.querySelector(".productButton");
+const payment = document.querySelector(".payment");
+const close = document.querySelector(".close");
+
+productButton.addEventListener("click",()=>{
+  payment.style.display="flex"
+})
+
+
+close.addEventListener("click",()=>{
+  payment.style.display="none"
+})
